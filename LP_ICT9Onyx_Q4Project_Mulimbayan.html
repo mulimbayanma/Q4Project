@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<title>Q4 Project</title>
+<style type="text/css">
+body{
+		background-color: beige;
+	}
+
+	body{
+	margin: 0px;
+	padding:0px;
+}
+.converter-body{
+	width: 400px;
+	height: 150px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	box-shadow: 0px 0px 2px 1px #cacaca;
+}
+
+.converter-title{
+	text-align: center;
+	margin: 13px 0px;
+}
+input{
+	height: 25px;
+	text-align: center;
+}
+#input{
+	margin-left: 15px;
+}
+#inputType,#resultType{
+width: 166.66px;
+margin-left: 15px;
+color: blue;
+}
+#resultType{
+	margin-left: 33px;
+}
+</style>
+</head>
+<body>
+
+<div class="converter-body">
+	
+	<h1 class="converter-title">Unit Converter</h1>
+
+<input type="text" placeholder="Input" id="input">
+<span>=</span>
+<input type="text" placeholder="Result" id="result">
+
+<select id="inputType">
+	<option value="meter">Meter</option>
+	<option value="kilometer">Kilometer</option>
+	<option value="Centimeter">Centimeter</option>
+</select>
+
+<select id="resultType">
+	<option value="meter">Meter</option>
+	<option value="kilometer">Kilometer</option>
+	<option value="Centimeter">Centimeter</option>
+</select>
+
+</div>
+
+<script>
+
+var input = document.getElementById('input');
+var result = document.getElementById('result');
+var inputType = document.getElementById('inputType');
+var resultType = document.getElementById('resultType');
+var inputTypeValue,resultTypeValue;
+
+input.addEventListener("keyup", myResult);
+inputType.addEventListener("change", myResult);
+resultType.addEventListener("change", myResult);
+
+inputTypeValue = inputType.value;
+resultTypeValue = resultType.value;
+
+
+function myResult(){
+	inputTypevalue = inputType.value;
+	resultTypevalue = resultType.value;
+
+	if(inputTypeValue === "meter" && resultTypeValue=== "kilometer"){
+result.value = Number(input.value) * 0.001;
+}else if (inputTypeValue === "meter" && resultTypeValue=== "Centimeter"){
+	result.value = Number(input.value) * 100;
+}else if (inputTypeValue === "meter" && resultTypeValue==="meter"){
+result.value = input.value
+}
+
+if(inputTypeValue === "kilometer" && resultTypeValue==="meter"){
+	result.value = Number(input.value) * 1000;
+}else if(inputTypeValue === "kilometer" && resultTypeValue==="Centimeter"){
+	result.value = Number(input.value) * 100000;
+}else if(inputTypeValue === "kilometer" && resultTypeValue==="kilometer"){
+}
+
+
+if(inputTypeValue === "centimeter" && resultTypeValue==="kilometer"){
+	result.value = Number(input.value) * 0.00001;
+}else if(inputTypeValue === "centimeter" && resultTypeValue==="meter"){
+	result.value = Number(input.value) * 0.01;
+}else if(inputTypeValue === "centimeter" && resultTypeValue==="centimeter"){
+	result.value = input.value
+}
+
+
+}
+</script>
+
+
+
+</body>
+</html>
